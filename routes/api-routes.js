@@ -1,10 +1,9 @@
-const router = require('express').Router();
-const db = require('../models');
+const router = require("express").Router();
+const db = require("../models");
 
 // Use 'db.Workout' to refernce the model and use the methods provided with the model to execute database operatioms
 
-router.post('/api/workouts', (req, res) => {
-
+router.post("/api/workouts", (req, res) => {
   db.Workout.create(req.body)
     .then((dbWorkout) => {
       res.json(dbWorkout);
@@ -15,8 +14,7 @@ router.post('/api/workouts', (req, res) => {
     });
 });
 
-router.put('/api/workouts/:id', ({ body, params }, res) => {
-
+router.put("/api/workouts/:id", ({ body, params }, res) => {
   db.Workout.findByIdAndUpdate(
     params.id,
     { $push: { exercises: body } },
@@ -29,16 +27,14 @@ router.put('/api/workouts/:id', ({ body, params }, res) => {
     .catch((err) => {
       res.json(err);
     });
-
 });
 
-router.get('/api/workouts', (req, res) => {
-
+router.get("/api/workouts", (req, res) => {
   db.Workout.aggregate([
     {
       $addFields: {
         totalDuration: {
-          $sum: '$exercises.duration',
+          $sum: "$exercises.duration",
         },
       },
     },
@@ -49,17 +45,19 @@ router.get('/api/workouts', (req, res) => {
     .catch((err) => {
       res.json(err);
     });
-
 });
 
-router.get('/api/workouts/range', (req, res) => {
-
+router.get("/api/workouts/range", (req, res) => {
   db.Workout.aggregate([
     {
       // TODO: use $addField to add 'totalDuration'
       // TODO: use $sum to create the sum for totalDuration
-      
 
+      $addField: {
+        totalDuration: {
+          $sum: "$exercises.duration",
+        },
+      },
     },
   ])
     .sort({ _id: -1 })
@@ -71,12 +69,9 @@ router.get('/api/workouts/range', (req, res) => {
     .catch((err) => {
       res.json(err);
     });
-
 });
 
-router.delete('/api/workouts', ({ body }, res) => {
-
-
+router.delete("/api/workouts", ({ body }, res) => {
   db.Workout.findByIdAndDelete(body.id)
     .then(() => {
       res.json(true);
@@ -84,7 +79,6 @@ router.delete('/api/workouts', ({ body }, res) => {
     .catch((err) => {
       res.json(err);
     });
-
 });
 
 module.exports = router;
