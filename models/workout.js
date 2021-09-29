@@ -24,24 +24,19 @@ const workoutSchema = new Schema({
         required: "Please choose your exercise",
       },
       duration: {
-        // TODO: For the schema of this attribute, define type as number and its required
         type: Number,
         required: "Please enter a time",
       },
       weight: {
-        // TODO: For the schema of this attribute, define type as number
         type: Number,
       },
       reps: {
-        // TODO: For the schema of this attribute, define type as number
         type: Number,
       },
       sets: {
-        // TODO: For the schema of this attribute, define type as number
         type: Number,
       },
       distance: {
-        // TODO: For the schema of this attribute, define type as number
         type: Number,
       },
     },
