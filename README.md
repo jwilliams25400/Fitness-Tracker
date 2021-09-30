@@ -2,6 +2,10 @@
 
 https://www.github.com/JWilliams25400
 
+Link to deployed Heroku application: https://fitness-tracker-jw21.herokuapp.com/
+
+Link to code repo: https://github.com/jwilliams25400/Fitness-Tracker
+
 
 ### [![License](https://img.shields.io/badge/License-MIT-blue.svg)] 
 
