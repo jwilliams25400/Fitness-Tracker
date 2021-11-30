@@ -35,6 +35,8 @@ Link to code repo: https://github.com/jwilliams25400/Fitness-Tracker
     project is Licensed under MIT
 --------------------
 
+![](images/fitnessTracker.jpg)
+
 
 ## Installations:
 to ensure the repo runs open the terminal and run the following: 
